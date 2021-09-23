@@ -23,12 +23,12 @@ class GoogleFontsServiceProvider extends PackageServiceProvider
     {
         $this->app->singleton(GoogleFonts::class, function (Application $app) {
             return new GoogleFonts(
-                filesystem: $app->make(FilesystemManager::class)->disk(config('google-fonts.disk')),
-                path: config('google-fonts.path'),
-                inline: config('google-fonts.inline'),
-                fallback: config('google-fonts.fallback'),
-                userAgent: config('google-fonts.user_agent'),
-                fonts: config('google-fonts.fonts'),
+                $app->make(FilesystemManager::class)->disk(config('google-fonts.disk')),
+                config('google-fonts.path'),
+                config('google-fonts.inline'),
+                config('google-fonts.fallback'),
+                config('google-fonts.user_agent'),
+                config('google-fonts.fonts'),
             );
         });
     }
